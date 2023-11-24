@@ -1,5 +1,6 @@
 import Page from "./page.js";
-
+import moveTo from '../support/action/moveTo.js';
+import setInputField from "../support/action/setInputField.js";
 /**
  * sub page containing specific selectors and methods for a specific page
  */
@@ -7,12 +8,16 @@ export class LoginPage extends Page {
     /**
      * define selectors using getter methods
      */
+    private Elements = {
+        username: '#username',
+        password: '#password'
+    };
     public get inputUsername () {
-        return $('#username');
+        return $(this.Elements.username);
     }
 
     public get inputPassword () {
-        return $('#password');
+        return $(this.Elements.password);
     }
 
     public get btnSubmit () {
@@ -24,7 +29,9 @@ export class LoginPage extends Page {
      * e.g. to login using username and password
      */
     public async login (username: string, password: string) {
-        await this.inputUsername.setValue(username);
+        //await moveTo(this.Elements.username, '10', '10');
+        setInputField('set',username,this.Elements.username)
+       // await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
         await this.btnSubmit.click();
     }

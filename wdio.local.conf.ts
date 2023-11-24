@@ -11,6 +11,12 @@ export const config: WebdriverIO.Config = {
               headless: false
           }
         },
+      // {
+      //     browserName: 'firefox',
+      //     'wdio:devtoolsOptions': {
+      //         headless: false
+      //     }
+      // },
       ]
     }
 }
